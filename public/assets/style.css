@@ -1,4 +1,14 @@
 
+.body-content {
+    display: flex;
+    flex-direction: row;
+}
+.right-side {
+    flex: 1 1 auto;
+}
+.left-side {
+    min-width: 150px;
+}
 
 .menu-top {
     display: flex;
@@ -11,6 +21,7 @@
     display: flex;
 }
 
+
 .link-item {
     padding: 10px;
     margin: 5px;
@@ -19,6 +30,8 @@
     text-decoration: none;
     color: #9B410E;
     border: none;
+    display: flex;
+    flex: 1 1 auto;
 }
 
 .table-products {
@@ -26,23 +39,54 @@
     border-collapse: collapse;
 }
 
-.table-products th {
+.table-products th,
+.category_table th {
     border: 1px solid #9B410E;
     padding: 5px;
     background: #9B410E;
     color: #f0c040;
 }
 
-.table-products td {
+.table-products td,
+.category_table td{
     border: 1px solid #9B410E;
     padding: 5px;
 }
 
-.body-content {
+
+.addProductForm .formItem {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    margin: 5px;
 }
 
-.left-side {
-    min-width: 150px;
+.formItem label {
+    flex: 1 1 auto;
+    min-width: 170px;
 }
+
+.formItem input,
+.formItem textarea,
+.formItem select{
+    flex: 3 1 auto;
+    border: 2px solid #e28787;
+    border-radius: 6px;
+    padding: 3px;
+    color: #9B410E;
+}
+.category-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-list li {
+    list-style: none;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+
+

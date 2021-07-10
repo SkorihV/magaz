@@ -3,7 +3,7 @@
 <p>
             <a class="link-item" href='/categories/add'>Добавить</a>
         </p>
-        <table>
+        <table  class="category_table">
             <thead>
                 <tr>
                     <th>#</th>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2021-07-05 20:59:20
+<?php /* Smarty version 2.6.31, created on 2021-07-10 21:41:53
          compiled from header.tpl */ ?>
 <!doctype html>
 <html lang="en">
@@ -18,17 +18,12 @@
     </ul>
     <?php if ($this->_tpl_vars['h1']): ?><h1><?php echo $this->_tpl_vars['h1']; ?>
 </h1><?php endif; ?>
-
     <div class="body-content">
         <div class="left-side">
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "/categories-list.tpl", 'smarty_include_vars' => array('categories' => $this->_tpl_vars['categories'])));
+$this->_smarty_include(array('smarty_include_tpl_file' => "categories-list.tpl", 'smarty_include_vars' => array('categories' => $this->_tpl_vars['categories'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
         </div>
-        <div class="right-side">
-
-
-
-
+        <div class="right-side">

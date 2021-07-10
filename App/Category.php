@@ -47,7 +47,7 @@ function add_category($connect, $category) {
     return mysqli_affected_rows($connect);
 }
 
-function delete_pcategory_by_id($connect, $id) {
+function delete_category_by_id($connect, $id) {
     $query = "DELETE FROM category WHERE id = $id";
     query($connect, $query);
 

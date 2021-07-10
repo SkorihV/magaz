@@ -1,14 +1,15 @@
-<?php /* Smarty version 2.6.31, created on 2021-07-05 20:32:52
+<?php /* Smarty version 2.6.31, created on 2021-07-10 20:32:41
          compiled from categories/form.tpl */ ?>
 <br>
-<form method="post">
+<form method="post" class="addProductForm">
     <input type="hidden" name="id" value="<?php echo $this->_tpl_vars['category']['id']; ?>
 ">
-    <label>
-        Название категории<input type="text" name="name" value="<?php echo $this->_tpl_vars['category']['name']; ?>
+
+    <div class="formItem">
+        <label for="name">Название категории</label>
+        <input type="text" name="name" id="name" value="<?php echo $this->_tpl_vars['category']['name']; ?>
 ">
-    </label>
-    <br>
+    </div>
     <input class="link-item" type="submit" value="<?php echo $this->_tpl_vars['submit_name']; ?>
 ">
 </form>

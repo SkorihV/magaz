@@ -9,6 +9,7 @@
                 <tr>
                     <th>#</th>
                     <th>Название</th>
+                    <th>Категория</th>
                     <th>Цена</th>
                     <th>Валюта</th>
                     <th>Артикул</th>
@@ -26,12 +27,13 @@
                 <tr>
                     <td>{$product.id}</td>
                     <td>{$product.name}</td>
+                    <td>{$product.category_name}</td>
                     <td>{$product.price}</td>
                     <td>{$product.corrency}</td>
                     <td>{$product.article}</td>
                     <td>{$product.amount}</td>
                     <td>{$product.body}</td>
-                    <td>{$product.wight}</td>
+                    <td>{$product.weight}</td>
                     <td>{$product.unitWeight}</td>
                     <td>
                         <a  class="link-item" href="/products/edit?id={$product.id}">Редактировать</a>

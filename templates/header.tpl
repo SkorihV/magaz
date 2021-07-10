@@ -15,13 +15,8 @@
         <li><a class="link-item" href="/categories/">Категории</a></li>
     </ul>
     {if $h1}<h1>{$h1}</h1>{/if}
-
     <div class="body-content">
         <div class="left-side">
-{include file="/categories-list.tpl" categories=$categories}
+{include file="categories-list.tpl" categories=$categories}
         </div>
         <div class="right-side">
-
-
-
-

@@ -8,7 +8,6 @@ $product = [];
 if ($id) {
     $product = get_product_by_id($connect,$id);
 }
-
 if (!empty($_POST)) {
 
     $product = get_product_from_post();
@@ -22,7 +21,8 @@ if (!empty($_POST)) {
         die("Что-то пошло не так");
     }
 }
-
+$categories = get_category_list($connect);
+$smarty->assign("categories", $categories);
 $smarty->assign("product", $product );
 $smarty->display( 'products/edit.tpl');
 

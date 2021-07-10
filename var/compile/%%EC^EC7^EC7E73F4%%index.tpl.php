@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2021-07-05 20:34:36
+<?php /* Smarty version 2.6.31, created on 2021-07-10 20:12:11
          compiled from categories/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.tpl", 'smarty_include_vars' => array('h1' => "Список категорий")));
@@ -9,7 +9,7 @@ unset($_smarty_tpl_vars);
 <p>
             <a class="link-item" href='/categories/add'>Добавить</a>
         </p>
-        <table>
+        <table  class="category_table">
             <thead>
                 <tr>
                     <th>#</th>

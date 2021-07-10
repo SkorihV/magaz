@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2021-07-05 20:58:04
+<?php /* Smarty version 2.6.31, created on 2021-07-10 21:26:26
          compiled from products/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.tpl", 'smarty_include_vars' => array('h1' => "Списко товаров")));
@@ -15,6 +15,7 @@ unset($_smarty_tpl_vars);
                 <tr>
                     <th>#</th>
                     <th>Название</th>
+                    <th>Категория</th>
                     <th>Цена</th>
                     <th>Валюта</th>
                     <th>Артикул</th>
@@ -36,6 +37,8 @@ unset($_smarty_tpl_vars);
 </td>
                     <td><?php echo $this->_tpl_vars['product']['name']; ?>
 </td>
+                    <td><?php echo $this->_tpl_vars['product']['category_name']; ?>
+</td>
                     <td><?php echo $this->_tpl_vars['product']['price']; ?>
 </td>
                     <td><?php echo $this->_tpl_vars['product']['corrency']; ?>
@@ -46,7 +49,7 @@ unset($_smarty_tpl_vars);
 </td>
                     <td><?php echo $this->_tpl_vars['product']['body']; ?>
 </td>
-                    <td><?php echo $this->_tpl_vars['product']['wight']; ?>
+                    <td><?php echo $this->_tpl_vars['product']['weight']; ?>
 </td>
                     <td><?php echo $this->_tpl_vars['product']['unitWeight']; ?>
 </td>

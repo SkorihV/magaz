@@ -1,7 +1,7 @@
 <?php
 
 function get_product_list($connect) {
-    $query = "SELECT * FROM products";
+    $query = "SELECT p.*, c.name as category_name FROM products p LEFT JOIN category c ON  p.category_id = c.id";
     $ressult = query($connect, $query);
 
 
@@ -15,7 +15,7 @@ function get_product_list($connect) {
 
 function get_product_by_id($connect, $id) {
 
-    $query = "SELECT * FROM products WHERE id = $id";
+    $query = "SELECT p.*, c.id AS category_id FROM products p LEFT JOIN category c ON  p.category_id = c.id WHERE p.id = $id";
     $result = query($connect, $query);
 
     $product = mysqli_fetch_assoc($result);
@@ -36,6 +36,8 @@ function update_product_by_id($connect, $id, $product ) {
     $body = $product['body'] ?? '';
     $weight = $product['weight'] ?? '';
     $unitWeight = $product['unitWeight'] ?? '';
+    $category_id = $product['category_id'] ?? '';
+
 
 
     $query = "UPDATE products SET 
@@ -46,7 +48,8 @@ function update_product_by_id($connect, $id, $product ) {
                 amount = '$amount',
                 body = '$body',
                 weight = '$weight',
-                unitWeight = '$unitWeight'
+                unitWeight = '$unitWeight',
+                category_id = '$category_id'
                 WHERE id = $id";
 
     query($connect, $query);
@@ -63,8 +66,11 @@ function add_product($connect, $product) {
     $body = $product['body'] ?? '';
     $weight = $product['weight'] ?? '';
     $unitWeight = $product['unitWeight'] ?? '';
+    $category_id  = $product['category_id'] ?? '';
 
-    $query = "INSERT INTO products (name, price, currency, article, amount, body, weight, unitWeight) VALUES ('$name', '$price', '$currency', '$article', '$amount', '$body', '$weight', '$unitWeight')";
+
+
+    $query = "INSERT INTO products (`name`, `price`, `currency`, `article`, `amount`, `body`, `weight`, `unitWeight`, `category_id`) VALUES ('$name', '$price', '$currency', '$article', '$amount', '$body', '$weight', '$unitWeight', '$category_id')";
     query($connect, $query);
 
     return mysqli_affected_rows($connect);
@@ -87,7 +93,8 @@ function get_product_from_post() {
         'amount'        => $_POST['amount'] ?? '',
         'body'          => $_POST['body'] ?? '',
         'weight'        => $_POST['weight'] ?? '',
-        'unitWeight'    => $_POST['unitWeight'] ?? ''
+        'unitWeight'    => $_POST['unitWeight'] ?? '',
+        'category_id'   => $_POST['category_id'] ?? ''
     ];
 }
 
