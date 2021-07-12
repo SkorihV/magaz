@@ -1,12 +1,21 @@
 <?php
 
-function get_product_list($connect) {
-    $query = "SELECT p.*, c.name as category_name FROM products p LEFT JOIN category c ON  p.category_id = c.id";
+function get_product_list_count($connect) {
+    $query = "SELECT COUNT(*) as c FROM products p LEFT JOIN category c ON  p.category_id = c.id";
     $ressult = query($connect, $query);
+
+    $row = mysqli_fetch_assoc($ressult);
+    return (int)($row['c'] ?? 0);
+
+}
+
+function get_product_list($connect, int $limit = 100, int $offset = 0) {
+    $query = "SELECT p.*, c.name as category_name FROM products p LEFT JOIN category c ON  p.category_id = c.id LIMIT $offset, $limit";
+    $result = query($connect, $query);
 
 
     $products = [];
-    while ($row = mysqli_fetch_assoc($ressult)) {
+    while ($row = mysqli_fetch_assoc($result)) {
         $products[] = $row;
     }
     return $products;
@@ -25,6 +34,20 @@ function get_product_by_id($connect, $id) {
 
     return $product;
 }
+
+function get_product_list_by_category($connect, $category_id) {
+    $query = "SELECT p.*, c.name as category_name FROM products p LEFT JOIN category c ON  p.category_id = c.id WHERE p.category_id = $category_id" ;
+    $ressult = query($connect, $query);
+
+
+    $products = [];
+    while ($row = mysqli_fetch_assoc($ressult)) {
+        $products[] = $row;
+    }
+    return $products;
+
+}
+
 
 function update_product_by_id($connect, $id, $product ) {
     $id = $product['id'] ?? '';

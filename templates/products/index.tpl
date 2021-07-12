@@ -1,6 +1,5 @@
 {include file="header.tpl" h1="Списко товаров"}
 
-
 <p>
             <a class="link-item" href='/products/add'>Добавить</a>
         </p>
@@ -49,5 +48,13 @@
             {/foreach}
             </tbody>
         </table>
+        <br>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {section loop=$pages_count name=pagination}
+                    <li class="page-item {if $smarty.get.p == $smarty.section.pagination.iteration} active{/if}"><a class="page-link" href="{$smarty.server.PATH_INFO}?p={$smarty.section.pagination.iteration}">{$smarty.section.pagination.iteration}</a></li>
+                {/section}
+            </ul>
+        </nav>
 {include file="bottom.tpl"}
 
