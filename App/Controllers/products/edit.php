@@ -1,27 +1,25 @@
 <?php
 
-$id = $_GET['id'];
-$id = (int) $id;
+$id = Requests::getIntFromGet('id');
 
 $product = [];
 
 if ($id) {
     $product = Product::getById($id);
 }
-if (!empty($_POST)) {
+if (Requests::isPost()) {
 
     $product = Product::getFromPost();
     $edited = Product::updateById($id, $product);
 
-
-
     if ($edited) {
-        header('Location: /products/list');
+        Response::redirect("/products/list");
     } else {
         die("Что-то пошло не так");
     }
 }
 $categories = Category::getList();
+
 $smarty->assign("categories", $categories);
 $smarty->assign("product", $product );
 $smarty->display( 'products/edit.tpl');

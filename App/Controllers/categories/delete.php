@@ -1,7 +1,6 @@
 <?php
 
-$id = $_POST['id'];
-$id = (int)$id;
+$id = Requests::getIntFromPost('id', );
 
 if(!$id) {
     die ("Что то пошло не так с удалением");
@@ -10,7 +9,7 @@ if(!$id) {
 $deleted = Category::deleteById($id);
 
 if ($deleted) {
-    header('Location: /categories/list');
+    Response::redirect('/categories/list');
 } else {
     die("Что-то пошло не так");
 }

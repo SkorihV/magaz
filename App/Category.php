@@ -3,61 +3,39 @@
 class Category {
     public static function getList() {
         $query = "SELECT * FROM category";
-        $ressult = Db::query($query);
-
-
-        $categores = [];
-        while ($row = mysqli_fetch_assoc($ressult)) {
-            $categores[] = $row;
-        }
-        return $categores;
+        return Db::fetchAll($query);
     }
 
     public static function getById($id) {
         $query = "SELECT * FROM category WHERE id = $id";
-        $result = Db::query($query);
-
-        $category = mysqli_fetch_assoc($result);
-        if (is_null($category)) {
-            $category = [];
-        }
-
-        return $category;
+        return Db::fetchRow($query);
     }
 
-    public static function updateById($id, $category ) {
-        $id = $category['id'] ?? '';
-        $name = $category['name'] ?? '';
+    public static function updateById(int $id, array $category ) {
+        if (isset($category['id'])) {
+            unset($category['id']);
+        }
+        return Db::update("category", $category, "id = $id");
 
-        $query = "UPDATE category SET 
-                name = '$name'
-                WHERE id = $id";
-
-        Db::query($query);
-        return Db::affectedRows();
     }
 
     public static function add($category) {
-        $name = $category['name'] ?? '';
 
-        $query = "INSERT INTO category (`name`) VALUES ('$name')";
-        Db::query($query);
-        return Db::affectedRows();
+        if (isset($category['id'])) {
+            unset($category['id']);
+        }
+        return Db::insert("category", $category);
+
     }
 
     public static function deleteById($id) {
-        $query = "DELETE FROM category WHERE id = $id";
-        Db::query($query);
-
-        return Db::affectedRows();
+        return Db::delete("category", "id = $id");
     }
 
     public static function getFromPost() {
         return [
-            'id'            => $_POST['id'] ?? '',
-            'name'          => $_POST['name'] ?? '',
+            'id'            => Requests::getIntFromPost('id', false),
+            'name'          => Requests::getStrFromPost('name')
         ];
     }
-
 }
-

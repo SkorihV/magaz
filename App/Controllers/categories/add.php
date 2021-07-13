@@ -1,12 +1,12 @@
 <?php
 
-if (!empty($_POST)) {
-echo "<pre>";
+if (Requests::isPost()) {
+
     $category = Category::getFromPost();
     $inserted = Category::add($category);
 
     if ($inserted) {
-        header('Location: /categories/list');
+        Response::redirect('/categories/list');
     } else {
         die("Что-то пошло не так");
     }
