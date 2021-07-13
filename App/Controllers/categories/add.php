@@ -2,8 +2,8 @@
 
 if (!empty($_POST)) {
 echo "<pre>";
-    $category = get_category_from_post();
-    $inserted = add_category($connect, $category);
+    $category = Category::getFromPost();
+    $inserted = Category::add($category);
 
     if ($inserted) {
         header('Location: /categories/list');

@@ -9,7 +9,7 @@ if ($is_index) {
 if (is_null($path_info)) {
     $path_info =  '/products/list';
 }*/
-$categories = get_category_list($connect);
+$categories = Category::getList();
 $smarty->assign('categories', $categories);
 $controller_path = $_SERVER['DOCUMENT_ROOT'] . '/../App/Controllers' . $path_info . '.php';
 

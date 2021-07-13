@@ -7,7 +7,7 @@ if(!$id) {
     die ("Что то пошло не так с удалением");
 }
 
-$deleted = delete_product_by_id($connect, $id);
+$deleted = Product::deleteById($id);
 
 if ($deleted) {
     header('Location: /products/list');

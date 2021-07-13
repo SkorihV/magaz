@@ -6,12 +6,12 @@ $id = (int) $id;
 $product = [];
 
 if ($id) {
-    $product = get_product_by_id($connect,$id);
+    $product = Product::getById($id);
 }
 if (!empty($_POST)) {
 
-    $product = get_product_from_post();
-    $edited = update_product_by_id($connect, $id, $product);
+    $product = Product::getFromPost();
+    $edited = Product::updateById($id, $product);
 
 
 
@@ -21,7 +21,7 @@ if (!empty($_POST)) {
         die("Что-то пошло не так");
     }
 }
-$categories = get_category_list($connect);
+$categories = Category::getList();
 $smarty->assign("categories", $categories);
 $smarty->assign("product", $product );
 $smarty->display( 'products/edit.tpl');
