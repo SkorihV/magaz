@@ -8,17 +8,32 @@ class Product {
 
     public static function getList(int $limit = 100, int $offset = 0) {
         $query = "SELECT p.*, c.name as category_name FROM products p LEFT JOIN category c ON  p.category_id = c.id LIMIT $offset, $limit";
-        return Db::fetchAll($query);
+        $products = Db::fetchAll($query);
+
+        foreach ($products as &$product) {
+            $images = ProductImage::getListByProductId($product['id']);
+            $product['images'] = $images;
+        }
+        return $products;
     }
 
     public static function getById($id) {
         $query = "SELECT p.*, c.id AS category_id FROM products p LEFT JOIN category c ON  p.category_id = c.id WHERE p.id = $id";
-        return Db::fetchRow($query);
+        $product =  Db::fetchRow($query);
+
+        $product['images'] = ProductImage::getListByProductId($id);
+        return $product;
     }
 
     public static function getListByCategory($category_id) {
         $query = "SELECT p.*, c.name as category_name FROM products p LEFT JOIN category c ON  p.category_id = c.id WHERE p.category_id = $category_id";
-        return Db::fetchAll($query);
+        $products = Db::fetchAll($query);
+
+        foreach ($products as &$product) {
+            $images = ProductImage::getListByProductId($product['id']);
+            $product['images'] = $images;
+        }
+        return $products;
     }
 
     public static function updateById (int $id, array $product )
@@ -39,6 +54,10 @@ class Product {
     }
 
     public static function deleteById(int $id) {
+
+        $path = APP_UPLOAD_PRODUCTS_DIR . '/' . $id;
+        deleteDir($path);
+        ProductImage::deleteByProductId($id);
         return Db::delete('products', "id = $id");
     }
 

@@ -42,6 +42,14 @@ CREATE  TABLE category (
 
 
 
+CREATE TABLE product_images (
+    id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    product_id int unsigned NOT NULL,
+    name varchar(255) NOT NULL,
+    path varchar(255) NOT NULL
+);
+
+
 
 
 

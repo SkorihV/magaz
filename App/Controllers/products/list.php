@@ -9,7 +9,6 @@ $pages_count = ceil($products_count / $limit);
 
 $products = Product::getList( $limit, $offset);
 
-
 $smarty->assign('pages_count', $pages_count);
 $smarty->assign('products', $products);
 $smarty->display( 'products/index.tpl');
